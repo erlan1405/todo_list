@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const Task = require('./db/task.mjs');
+const Task = require('./db/task.js');
 const app = express();
 
 // EJS settings
