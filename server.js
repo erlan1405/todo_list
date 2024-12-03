@@ -20,14 +20,13 @@ mongoose.connect('mongodb+srv://erlander5551:tYvPO2lhqR1SuiAB@cluster0.grlyi.mon
 .catch((err) => console.log('Error connecting to MongoDB:', err));
 
 // Upload all task
-app.get('/', (req, res) => {
-    Task.find({}, (err, tasks) => {
-        if (err) {
-            res.status(500).send('Error fetching tasks');
-        } else {
-            res.json(tasks);
-        }
-    });
+app.get('/', async (req, res) => {
+    try {
+        const tasks = await Task.find();
+        res.json(tasks);
+    } catch (err) {
+        res.status(500).send('Error fetching tasks');
+    }
 });
 
 // Add a new task
