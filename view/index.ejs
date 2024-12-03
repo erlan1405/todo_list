@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="/todo_list/public/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>List of Tasks</h1>
+
+        <!-- Form for add task -->
+        <form action="/add" method="POST">
+            <input type="text" name="taskInput" id="taskInput" placeholder="Add new task" required>
+            <button type="submit" id="addTaskButton">Add</button>
+        </form>
+
+        <!-- List of task -->
+        <ul id="taskList">
+            <% tasks.forEach(function(task) { %>
+                <li><%= task.name %></li>
+            <% }); %>
+        </ul>
+    </div>
+    <script src="/todo_list/public/js/script.js"></script>
+</body>
+</html>
