@@ -2,10 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Task = require('./db/task.js');
+const path = require('path');
 const app = express();
+
 
 // EJS settings
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'view'));
+app.get('/', (req, res) => {
+    res.render('index', {first_name: "Erlan"});
+});
 
 // Middleware conncection
 app.use(bodyParser.urlencoded({ extended: true }));
