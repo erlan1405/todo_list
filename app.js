@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Todo = require('./models/Todo');
 const app = express();
+import dotenv from "dotenv";
 
 // Connect to mongoDB
-mongoose.connect('mongodb+srv://erlander5551:tYvPO2lhqR1SuiAB@cluster0.grlyi.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.log(err));
+dotenv = config();
+await mongoose.connect(process.env.ATLAS_URI);
+
 
 // EJS settings
 app.set('view engine', 'ejs');
