@@ -3,16 +3,24 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Todo = require('./models/Todo');
 const app = express();
-import dotenv from "dotenv";
+const dotenv = require('dotenv');
+
+// Load environment variables from .env file
+dotenv.config();
 
 // Connect to mongoDB
-dotenv = config();
-await mongoose.connect(process.env.ATLAS_URI);
+mongoose.connect(process.env.ATLAS_URI)
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch(err => {
+    console.error('MongoDB connection error:', err);
+  });
 
 
 // EJS settings
 app.set('view engine', 'ejs');
-app.set('views', './views');
+app.set('views', './view');
 
 // Static file for CSS
 app.use(express.static('public'));
